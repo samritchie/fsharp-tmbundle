@@ -6,6 +6,7 @@
 	<array>
 		<string>fs</string>
 		<string>fsi</string>
+		<string>fsx</string>
 	</array>
 	<key>foldingStartMarker</key>
 	<string></string>
@@ -238,7 +239,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>\b(val|val|let|and|member|override|use)\s?(rec|inline|mutable)?(\s+([a-zA-Z][a-zA-Z0-9.]*)\w*)\b</string>
+					<string>\b(val|val|let|and|member|override|use)\s?(rec|inline|mutable)?(\s+\(?([a-zA-Z.\|_][a-zA-Z0-9.|_]*)\)?\w*)\b</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -313,14 +314,8 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>match</key>
-					<string>\b(new|in|as|if|then|else|elif|for|begin|end|match|with|type|inherit|true|false|null|do)\b</string>
-					<key>name</key>
-					<string>keyword.other.fsharp</string>
-				</dict>
-				<dict>
 					<key>begin</key>
-					<string>^\s*#\s*(light)\b</string>
+					<string>^\s*#\s*(light|if|else|endif|r|I|load|time|help|quit)\b</string>
 					<key>end</key>
 					<string>(\s|$)</string>
 					<key>name</key>
@@ -328,7 +323,13 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(\|&gt;|\-&gt;|\&lt;\-|:&gt;|:|\[|\]|\;|\||_)</string>
+					<string>\b(new|in|as|if|then|else|elif|for|begin|end|match|with|type|inherit|true|false|null|do)\b</string>
+					<key>name</key>
+					<string>keyword.other.fsharp</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(\|&gt;|\|?&gt;|\-&gt;|\&lt;\-|:&gt;|:|\[|\]|\;|\||_)</string>
 					<key>name</key>
 					<string>entity.name</string>
 				</dict>

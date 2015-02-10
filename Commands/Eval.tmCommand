@@ -8,7 +8,7 @@
 	<string>EXPR="$(cat | sed 's/\\/\\\\/g' | sed 's/\"/\\\"/g')" 
 
 export SHELL_NAME=${SHELL_NAME:="FSharp Interactive"}
-export SHELL_INTERPRETER=${SHELL_INTERPRETER:="fsi"}
+export SHELL_INTERPRETER=${SHELL_INTERPRETER:="fsharpi"}
 
 osascript &lt;&lt; END
 tell application "iTerm"
@@ -16,15 +16,15 @@ tell application "iTerm"
         make new terminal
     end if
     tell the first terminal
-        if not (exists session named "$SHELL_NAME") then
+        if not (exists (every session whose name starts with "$SHELL_NAME")) then
             launch session "Default"
             tell the current session
                 set name to "$SHELL_NAME"
                 write text "$SHELL_INTERPRETER"
             end tell
         end if
-        select session named "$SHELL_NAME"
-        tell session named "$SHELL_NAME"
+        select (the first session whose name starts with "$SHELL_NAME")
+        tell (the first session whose name starts with "$SHELL_NAME")
             write text "$EXPR" &amp; ";;"
         end tell
     end tell
