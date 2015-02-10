@@ -164,7 +164,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;!\w)(')</string>
+					<string>(?&lt;![\w'])(')</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -418,7 +418,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>^\s*#\s*(light|if|else|endif|r|I|load|time|help|quit)\b</string>
+					<string>^\s*#\s*(light|if|else|endif|r|I|load|time|help|quit|nowarn)\b</string>
 					<key>end</key>
 					<string>(\s|$)</string>
 					<key>name</key>
@@ -440,11 +440,11 @@
 					<key>match</key>
 					<string>\+|-|/|%|\*\*|\*</string>
 					<key>name</key>
-					<string>keyword.arithmetic.fsharp</string>
+					<string>keyword.operator.arithmetic.fsharp</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(\|&gt;|\|\?&gt;|\-&gt;|\&lt;\-|:&gt;|:|\[|\]|\;|_|&amp;&amp;)</string>
+					<string>(\|&gt;|\|\?&gt;|\-&gt;|\&lt;\-|:&gt;|:|\[|\]|\;|(?&lt;!\w)_(?!\w)|&amp;&amp;)</string>
 					<key>name</key>
 					<string>keyword.operator.name</string>
 				</dict>
@@ -452,13 +452,13 @@
 					<key>match</key>
 					<string>\|</string>
 					<key>name</key>
-					<string>keyword.other.fsharp</string>
+					<string>keyword.operator.other.fsharp</string>
 				</dict>
 				<dict>
 					<key>match</key>
 					<string>=|&gt;=|&lt;=|&lt;&gt;|&lt;|&gt;</string>
 					<key>name</key>
-					<string>keyword.comparison.fsharp</string>
+					<string>keyword.operator.comparison.fsharp</string>
 				</dict>
 			</array>
 		</dict>
@@ -725,12 +725,6 @@
 					<key>name</key>
 					<string>constant.character.escape.unicode-sequence.fsharp</string>
 				</dict>
-				<dict>
-					<key>match</key>
-					<string>\\.</string>
-					<key>name</key>
-					<string>invalid.illegal.character.string.fsharp</string>
-				</dict>
 			</array>
 		</dict>
 		<key>string-format-specs</key>
@@ -791,12 +785,6 @@
 							<string>\\([\\'ntbr]|u[a-fA-F0-9]{4}|u[a-fA-F0-9]{8})</string>
 							<key>name</key>
 							<string>constant.character.string.escape.fsharp</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>\\(?![\\'ntbr]|u[a-fA-F0-9]{4}|u[a-fA-F0-9]{8}).</string>
-							<key>name</key>
-							<string>invalid.illeagal.character.string.fsharp</string>
 						</dict>
 					</array>
 				</dict>
